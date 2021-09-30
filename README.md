@@ -13,7 +13,7 @@
 
 * github 授权登录[Server酱](http://sc.ftqq.com/3.version)官网
 * 在`发送消息`拷贝SCKEY
-* 
+
 ## 参考项目
 * [NobyDa/Script/JD-DailyBonus](https://github.com/NobyDa/Script/blob/master/JD-DailyBonus/JD_DailyBonus.js)
 * [ruicky/jd-sign-bot](https://github.com/ruicky/jd_sign_bot)
