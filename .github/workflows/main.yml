@@ -1,4 +1,4 @@
-name: 'Hostloc Auto Get Points'
+name: Kingdone_AS
 
 on:
   push:
@@ -7,23 +7,36 @@ on:
   schedule:
     - cron: '0 17 * * *'
 
+    
+env:
+  JD_COOKIE: ${{ secrets.JD_COOKIE }}
+  PUSH_KEY: ${{ secrets.PUSH_KEY }}
+  UPLOAD_BESULT_DIR: true
+
 jobs:
-  get_points:
-    runs-on: ubuntu-latest
-    steps:
-    - name: 'Checkout codes'
-      uses: actions/checkout@v2
-    - name: 'Set python'
-      uses: actions/setup-python@v1
-      with:
-        python-version: '3.6'
-    - name: 'Install dependencies'
-      run: pip install -r requirements.txt
-           pip install rsa
-    - name: 'Get points'
-      env:
-        HOSTLOC_USERNAME: ${{ secrets.HOSTLOC_USERNAME }}
-        HOSTLOC_PASSWORD: ${{ secrets.HOSTLOC_PASSWORD }}
-      run: python hostloc.py
-      
-      
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout codes
+              uses: actions/checkout@v2
+              
+            - name: Use Node.js
+              uses: actions/setup-node@v1
+              with:
+                node-version: '12.x'
+                
+            - name: Run install
+              run: npm install
+              
+            - name: Run Script
+              run: node kd.js
+                
+            - name: Upload result file
+              uses: actions/upload-artifact@master
+              if: env.UPLOAD_BESULT_DIR == 'true'
+              with:
+                name: result
+                path: ./*.txt
+
+
