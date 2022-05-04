@@ -1,4 +1,4 @@
-// Yaju114514
+// Modified by COBRA11
 // create by zhihua
 // detail url: https://github.com/ruicky/
 
